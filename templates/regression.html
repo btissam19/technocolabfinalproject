@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Regression</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Regression Model</h1>
+        <form action="{{ url_for('regression') }}" method="post">
+            <label for="CreditScore">Credit Score:</label>
+            <input type="number" id="CreditScore" name="CreditScore" step="any" required><br>
+            <label for="Units">Units:</label>
+            <input type="number" id="Units" name="Units" step="any" required><br>
+            <label for="DTI">DTI:</label>
+            <input type="number" id="DTI" name="DTI" step="any" required><br>
+            <label for="OrigUPB">Original UPB:</label>
+            <input type="number" id="OrigUPB" name="OrigUPB" step="any" required><br>
+            <label for="OrigInterestRate">Original Interest Rate:</label>
+            <input type="number" id="OrigInterestRate" name="OrigInterestRate" step="any" required><br>
+            <label for="MIP">MIP:</label>
+            <input type="number" id="MIP" name="MIP" step="any" required><br>
+            <label for="MonthsDelinquent">Months Delinquent:</label>
+            <input type="number" id="MonthsDelinquent" name="MonthsDelinquent" step="any" required><br>
+            <label for="OrigLoanTerm">Original Loan Term:</label>
+            <input type="number" id="OrigLoanTerm" name="OrigLoanTerm" step="any" required><br>
+            <label for="MonthsInRepayment">Months in Repayment:</label>
+            <input type="number" id="MonthsInRepayment" name="MonthsInRepayment" step="any" required><br>
+            <label for="EMI">EMI:</label>
+            <input type="number" id="EMI" name="EMI" step="any" required><br>
+            <label for="interest_amt">Interest Amount:</label>
+            <input type="number" id="interest_amt" name="interest_amt" step="any" required><br>
+            <label for="MonthlyIncome">Monthly Income:</label>
+            <input type="number" id="MonthlyIncome" name="MonthlyIncome" step="any" required><br>
+            <label for="cur_principal">Current Principal:</label>
+            <input type="number" id="cur_principal" name="cur_principal" step="any" required><br>
+            <input type="submit" value="Predict">
+        </form>
+
+        {% if prediction is not none %}
+            <h2>Prediction Result</h2>
+            <p>{{ prediction }}</p>
+        {% endif %}
+
+        {% if error %}
+            <h2>Error</h2>
+            <p>{{ error }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>

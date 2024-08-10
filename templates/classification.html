@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Classification</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Classification Model</h1>
+        <form action="{{ url_for('classification') }}" method="post">
+            <label for="MonthsDelinquent">Months Delinquent:</label>
+            <input type="number" id="MonthsDelinquent" name="MonthsDelinquent" step="any" required><br>
+            <label for="CreditScore">Credit Score:</label>
+            <input type="number" id="CreditScore" name="CreditScore" step="any" required><br>
+            <label for="MaturityMonth">Maturity Month:</label>
+            <input type="number" id="MaturityMonth" name="MaturityMonth" step="any" required><br>
+            <label for="FirstPaymentMonth">First Payment Month:</label>
+            <input type="number" id="FirstPaymentMonth" name="FirstPaymentMonth" step="any" required><br>
+            <label for="OrigLoanTerm">Original Loan Term:</label>
+            <input type="number" id="OrigLoanTerm" name="OrigLoanTerm" step="any" required><br>
+            <label for="OrigInterestRate">Original Interest Rate:</label>
+            <input type="number" id="OrigInterestRate" name="OrigInterestRate" step="any" required><br>
+            <label for="OrigUPB">Original UPB:</label>
+            <input type="number" id="OrigUPB" name="OrigUPB" step="any" required><br>
+            <label for="Units">Units:</label>
+            <input type="number" id="Units" name="Units" step="any" required><br>
+            <label for="PropertyType">Property Type:</label>
+            <input type="number" id="PropertyType" name="PropertyType" step="any" required><br>
+            <label for="MaturityYear">Maturity Year:</label>
+            <input type="number" id="MaturityYear" name="MaturityYear" step="any" required><br>
+            <label for="FirstPaymentYear">First Payment Year:</label>
+            <input type="number" id="FirstPaymentYear" name="FirstPaymentYear" step="any" required><br>
+            <label for="DTI">DTI:</label>
+            <input type="number" id="DTI" name="DTI" step="any" required><br>
+            <label for="MIP">MIP:</label>
+            <input type="number" id="MIP" name="MIP" step="any" required><br>
+            <input type="submit" value="Predict">
+        </form>
+
+        {% if prediction is not none %}
+            <h2>Prediction Result</h2>
+            <p>{{ prediction }}</p>
+        {% endif %}
+
+        {% if error %}
+            <h2>Error</h2>
+            <p>{{ error }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
